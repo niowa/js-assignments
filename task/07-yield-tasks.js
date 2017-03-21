@@ -33,7 +33,18 @@
  *
  */
 function* get99BottlesOfBeer() {
-    throw new Error('Not implemented');
+    for (let i = 99; i > 2; i--) {
+        yield `${i} bottles of beer on the wall, ${i} bottles of beer.`
+        yield `Take one down and pass it around, ${i - 1} bottles of beer on the wall.`
+    }
+    yield `2 bottles of beer on the wall, 2 bottles of beer.`;
+    yield `Take one down and pass it around, 1 bottle of beer on the wall.`;
+    yield '1 bottle of beer on the wall, 1 bottle of beer.';
+    yield 'Take one down and pass it around, no more bottles of beer on the wall.';
+    yield 'No more bottles of beer on the wall, no more bottles of beer.';
+    yield 'Go to the store and buy some more, 99 bottles of beer on the wall.';
+    return;
+
 }
 
 
@@ -47,7 +58,14 @@ function* get99BottlesOfBeer() {
  *
  */
 function* getFibonacciSequence() {
-    throw new Error('Not implemented');
+    let prev = 0, current = 1;
+    yield prev;
+    while (current <= Number.MAX_VALUE) {
+        yield current;
+        let temp = current;
+        current += prev;
+        prev = temp;
+    }
 }
 
 
@@ -126,6 +144,35 @@ function* breadthTraversalTree(root) {
  *   [ 1, 3, 5, ... ], [ -1 ] => [ -1, 1, 3, 5, ...]
  */
 function* mergeSortedSequences(source1, source2) {
+    // console.log(source1.toString());
+    // let i = source1(),
+    //     j = source2();
+    // let result = [];
+    // let value;
+    // while (source1.length >= i && source2.length >= j) {
+    //     if (source1.length <= i) {
+    //         value = source2[j];
+    //         result.push(source2[j]);
+    //         j++;
+    //     }
+    //     else if (source2.length <= j) {
+    //         value = source1[i];
+    //         result.push(source1[i]);
+    //         i++;
+    //     }
+    //     else if (source1[i] > source2[j]) {
+    //         value = source2[j];
+    //         result.push(source2[j]);
+    //         j++;
+    //     }
+    //     else {
+    //         value = source1[i];
+    //         result.push(source1[i]);
+    //         i++;
+    //     }
+    //     yield value;
+    // }
+    // return result;
     throw new Error('Not implemented');
 }
 

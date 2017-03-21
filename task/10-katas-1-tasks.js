@@ -17,8 +17,20 @@
  *  ]
  */
 function createCompassPoints() {
-    throw new Error('Not implemented');
-    var sides = ['N','E','S','W'];  // use array of cardinal directions only!
+    var sides = ['N', 'NbE', 'NNE', 'NEbN', 'NE', 'NEbE', 'ENE', 'EbN', 'E',
+     'EbS', 'ESE', 'SEbE', 'SE', 'SEbS', 'SSE', 'SbE', 'S', 'SbW', 'SSW', 'SWbS',
+     'SW',  'SWbW', 'WSW', 'WbS', 'W', 'WbN', 'WNW', 'NWbW', 'NW', 'NWbN',  'NNW',
+      'NbW'];
+    let result = [];
+    let az = 0;
+    for (let i = 0; i < 32; i++) {
+        result.push({
+            abbreviation: sides[i],
+            azimuth: az
+        });
+        az += 11.25;
+    }
+    return result;
 }
 
 
@@ -88,6 +100,9 @@ function* expandBraces(str) {
  *
  */
 function getZigZagMatrix(n) {
+    // let arr = new Array(n).fill(new Array(n).fill(0));
+    // let count = 0;
+    // return arr.map((current) => current.map((value) => count++));
     throw new Error('Not implemented');
 }
 
@@ -113,6 +128,19 @@ function getZigZagMatrix(n) {
  *
  */
 function canDominoesMakeRow(dominoes) {
+    // let left = dominoes[0][0],
+    //     right = dominoes[0][1];
+    // for (let i = 1; i < dominoes.length; i++) {
+    //     let mayLeft = dominoes[i][0];
+    //     let mayRight = dominoes[i][1];
+    //     if (mayLeft === left) left = mayLeft;
+    //     else if (mayLeft === right) right = mayLeft;
+    //     else if (mayRight === right) right = mayRight;
+    //     else if (mayRight === left) left = mayRight;
+    //     else return false;
+    // }
+    // return true;
+
     throw new Error('Not implemented');
 }
 
@@ -137,7 +165,36 @@ function canDominoesMakeRow(dominoes) {
  * [ 1, 2, 4, 5]          => '1,2,4,5'
  */
 function extractRanges(nums) {
-    throw new Error('Not implemented');
+    let result = [];
+    let range = [];
+    let line = [];
+    let distStart = false;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] + 1 === nums[i + 1] ) {
+            line.push(nums[i]);
+        }
+        else {
+                line.push(nums[i]);
+                range.push(line);
+                line = [];
+            }
+    }
+
+    for (let i = 0; i < range.length; i++) {
+        if (range[i].length < 2) {
+            result.push(range[i][0]);
+        }
+        else if (range[i].length < 3) {
+            result.push(range[i][0]);
+            result.push(range[i][1])
+        }
+        else {
+            let str = range[i][0] + '-' + range[i][range[i].length - 1];
+            result.push(str);
+        }
+    }
+    return '' + result.join(',');
+
 }
 
 module.exports = {
